@@ -23,7 +23,10 @@ docker run hello-world
 
 # ============================
 # Install Hey.
-apt-get install -y hey
+wget https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64
+chown root:root hey_linux_amd64
+chmod 755 hey_linux_amd64
+mv hey_linux_amd64 /usr/local/bin/hey
 
 # ============================
 # Download and install Nomad and Consul.
