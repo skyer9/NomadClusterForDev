@@ -64,6 +64,6 @@ sudo chown 1000:1000 /opt/nomad-volumes/jenkins_home
 sudo systemctl daemon-reload
 
 sudo systemctl enable consul
-sudo systemctl start consul.service
+sudo systemctl restart consul.service
 sudo systemctl enable nomad
-sudo systemctl start nomad.service
+sudo systemctl restart nomad.service
