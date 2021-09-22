@@ -63,7 +63,9 @@ chown 1000:1000 /opt/nomad-volumes/jenkins_home
 
 adduser consul
 mkdir -p /opt/consul/data
+mkdir -p /var/lib/consul
 chown consul:consul /opt/consul/data
+chown consul:consul /var/lib/consul
 
 systemctl daemon-reload
 
