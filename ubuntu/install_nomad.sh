@@ -28,7 +28,9 @@ apt-get install -y \
   docker-ce-cli \
   containerd.io
 docker run hello-world
-usermod -aG docker vagrant
+
+# 내 계정 docker 그룹에 추가
+usermod -aG docker ubuntu
 
 # ============================
 # Install Hey.
@@ -40,10 +42,14 @@ curl --silent --show-error --remote-name-all \
   https://releases.hashicorp.com/nomad/"${nomad_version}"/nomad_"${nomad_version}"_linux_amd64.zip \
   https://releases.hashicorp.com/consul/"${consul_version}"/consul_"${consul_version}"_linux_amd64.zip
 unzip nomad_"${nomad_version}"_linux_amd64.zip
-# shellcheck disable=SC2086
-unzip consul_${consul_version}_linux_amd64.zip
-mv nomad consul /usr/local/bin
-chmod +x /usr/local/bin/{nomad,consul}
+unzip consul_"${consul_version}"_linux_amd64.zip
+mv consul /usr/local/bin
+mv nomad /usr/local/bin
+chmod +x /usr/local/bin/consul
+chmod +x /usr/local/bin/nomad
+
+mkdir /etc/consul.d
+mkdir /etc/nomad.d
 
 sudo cp ../common/consul.hcl /etc/consul.d/consul.hcl
 sudo cp ../common/consul.service /etc/systemd/system/consul.service
