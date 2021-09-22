@@ -61,7 +61,7 @@ chown 472:472 /opt/nomad-volumes/grafana
 mkdir -p /opt/nomad-volumes/jenkins_home
 chown 1000:1000 /opt/nomad-volumes/jenkins_home
 
-adduser consul
+useradd consul
 mkdir -p /opt/consul/data
 mkdir -p /var/lib/consul
 chown consul:consul /opt/consul/data
