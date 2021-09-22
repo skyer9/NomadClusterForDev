@@ -8,8 +8,6 @@ yum install -y \
   jq \
   zip
 
-exit
-
 nomad_version=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/nomad | jq -r '.current_version')
 consul_version=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/consul | jq -r '.current_version')
 
