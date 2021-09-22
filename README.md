@@ -14,6 +14,8 @@ sudo sh install_nomad.sh
 ## CentOS
 
 ```bash
+sudo yum install -y git
+
 git clone https://github.com/skyer9/NomadClusterForDev.git
 cd NomadClusterForDev
 cd centos
