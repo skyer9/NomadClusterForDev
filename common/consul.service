@@ -7,7 +7,7 @@ Wants=network-online.target
 [Service]
 Environment="DAEMON_ARGS=-data-dir=/var/lib/consul -config-dir=/etc/consul.d"
 EnvironmentFile=-/etc/default/%p
-ExecStart=/usr/bin/consul agent $DAEMON_ARGS
+ExecStart=/usr/local/bin/consul agent $DAEMON_ARGS
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 User=consul
