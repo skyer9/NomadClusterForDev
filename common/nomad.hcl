@@ -51,6 +51,12 @@ plugin "docker" {
       enabled = true
     }
 
+    # 실행 실패시 이미지 삭제
+    # 디버깅시 false 로 할것
+    gc {
+      container   = true
+    }
+
 #    auth {
 #      # Nomad will prepend "docker-credential-" to the helper value and call
 #      # that script name.
