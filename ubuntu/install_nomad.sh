@@ -30,7 +30,7 @@ apt-get install -y \
 docker run hello-world
 
 # 내 계정 docker 그룹에 추가
-usermod -aG docker ubuntu
+# usermod -aG docker ubuntu
 
 # ============================
 # Install Hey.
