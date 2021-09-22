@@ -17,7 +17,7 @@ consul_version=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/consul | 
 
 # ============================
 # Download and install Docker.
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 add-apt-repository \
   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) \
@@ -51,19 +51,23 @@ chmod +x /usr/local/bin/nomad
 mkdir /etc/consul.d
 mkdir /etc/nomad.d
 
-sudo cp ../common/consul.hcl /etc/consul.d/consul.hcl
-sudo cp ../common/consul.service /etc/systemd/system/consul.service
-sudo cp ../common/nomad.hcl /etc/nomad.d/nomad.hcl
-sudo cp ../common/nomad.service /etc/systemd/system/nomad.service
+cp ../common/consul.hcl /etc/consul.d/consul.hcl
+cp ../common/consul.service /etc/systemd/system/consul.service
+cp ../common/nomad.hcl /etc/nomad.d/nomad.hcl
+cp ../common/nomad.service /etc/systemd/system/nomad.service
 
-sudo mkdir -p /opt/nomad-volumes/grafana
-sudo chown 472:472 /opt/nomad-volumes/grafana
-sudo mkdir -p /opt/nomad-volumes/jenkins_home
-sudo chown 1000:1000 /opt/nomad-volumes/jenkins_home
+mkdir -p /opt/nomad-volumes/grafana
+chown 472:472 /opt/nomad-volumes/grafana
+mkdir -p /opt/nomad-volumes/jenkins_home
+chown 1000:1000 /opt/nomad-volumes/jenkins_home
 
-sudo systemctl daemon-reload
+adduser consul
+mkdir -p /opt/consul/data
+chown consul:consul /opt/consul/data
 
-sudo systemctl enable consul
-sudo systemctl restart consul.service
-sudo systemctl enable nomad
-sudo systemctl restart nomad.service
+systemctl daemon-reload
+
+systemctl enable consul
+systemctl restart consul.service
+systemctl enable nomad
+systemctl restart nomad.service
