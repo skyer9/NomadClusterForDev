@@ -56,6 +56,11 @@ sudo cp ../common/consul.service /etc/systemd/system/consul.service
 sudo cp ../common/nomad.hcl /etc/nomad.d/nomad.hcl
 sudo cp ../common/nomad.service /etc/systemd/system/nomad.service
 
+sudo mkdir -p /opt/nomad-volumes/grafana
+sudo chown 472:472 /opt/nomad-volumes/grafana
+sudo mkdir -p /opt/nomad-volumes/jenkins_home
+sudo chown 1000:1000 /opt/nomad-volumes/jenkins_home
+
 sudo systemctl daemon-reload
 
 sudo systemctl enable consul
