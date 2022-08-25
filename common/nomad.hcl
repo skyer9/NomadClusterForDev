@@ -3,9 +3,9 @@ data_dir   = "/opt/nomad/data"
 bind_addr  = "0.0.0.0"
 
 advertise {
-  http = "127.0.0.1"
-  rpc  = "127.0.0.1"
-  serf = "127.0.0.1"
+  http = "{{ GetPrivateIP }}"
+  rpc  = "{{ GetPrivateIP }}"
+  serf = "{{ GetPrivateIP }}"
 }
 
 server {
@@ -34,7 +34,7 @@ client {
 }
 
 consul {
-  address = "127.0.0.1:8500"
+  address = "{{ GetPrivateIP }}:8500"
 }
 
 #plugin "nvidia-gpu" {

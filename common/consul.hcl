@@ -1,4 +1,4 @@
-advertise_addr = "127.0.0.1"
+advertise_addr = "{{ GetPrivateIP }}"
 bind_addr = "0.0.0.0"
 bootstrap_expect = 1
 client_addr = "0.0.0.0"
